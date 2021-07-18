@@ -45,7 +45,6 @@ async function register() {
 const rawResponse = await fetch(`/api/register/${uname.toString().toLowerCase()}/${pin.toString()}/${pronouns.toString().toLowerCase().replace("/", ".")}`, {
     method: 'POST',
     headers: {
-      'Accept': 'text/plain'
     },
     body: ""
 });
