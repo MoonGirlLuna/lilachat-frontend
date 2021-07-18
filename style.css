@@ -8,12 +8,17 @@ body {
     margin-top: 10%;
 }
 
+form {
+    width: 100%
+}
+
 #box {
     background-color: white;
     padding: 5%;
     box-shadow: 10px 10px 10px black;
-    border-radius: 10px;
+    border-radius: 5px;
     display:inline-flex;
+    width: 20%;
 }
 
 #taken {
@@ -29,6 +34,7 @@ label {
 }
 
 input {
+    padding: 3%;
     background-color: #55CDFC;
     border-style: none;
     border-bottom-style: solid;

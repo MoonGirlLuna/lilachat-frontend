@@ -7,7 +7,6 @@ let newPin = document.querySelector('#newpin').value;
 // let pronouns = ''
 let responseText;
 const form = document.querySelector('form');
-const API_URL = `http://127.0.0.1:8000`
 
 form.addEventListener("submit", async function(event) {
     event.preventDefault();
@@ -47,13 +46,13 @@ form.addEventListener("submit", async function(event) {
 })
 
 async function getUname() {
-  let response = await fetch(`${API_URL}/api/users/${uname}`);
+  let response = await fetch(`/api/users/${uname}`);
   responseText = await response.text();
   return responseText;
 }
 
 async function loginChange() {
-const rawResponse = await fetch(`${API_URL}/api/users/change/${uname}/${pin}/${newUname}/${newPin}`, {
+const rawResponse = await fetch(`/api/users/change/${uname}/${pin}/${newUname}/${newPin}`, {
     method: 'POST',
     headers: {
       'Accept': 'text/plain'

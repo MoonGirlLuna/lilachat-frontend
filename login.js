@@ -1,8 +1,6 @@
 let uname = document.querySelector('#uname').value; // grabbing the username submitted and putting it in the variable uname
 let pin = document.querySelector('#pin').value; // grabbing the pin submitted and putting it in the variable pin
 const form = document.querySelector('form'); // grabbing an element on the page
-const API_URL = `http://127.0.0.1:8000`
-
 
 form.addEventListener("submit", async function(event) {
     event.preventDefault();
@@ -25,7 +23,8 @@ form.addEventListener("submit", async function(event) {
 })
 
 async function loginFetch() {
-    const rawResponse = await fetch(`${API_URL}/api/users/${uname}/${pin}`, {
+    const rawResponse = await fetch(`/api/users/${uname}/${pin}`, {
+        // credentials: "include",
         method: 'GET',
         headers: {
             'Accept': 'text/plain'

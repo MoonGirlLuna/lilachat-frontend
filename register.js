@@ -5,7 +5,6 @@ let custom = document.querySelector('#custom').value;
 let pronouns = ''
 let responseText;
 const form = document.querySelector('form'); // grabbing an element on the page
-const API_URL = `http://127.0.0.1:8000`
 
 form.addEventListener("submit", async function(event) {
     event.preventDefault();
@@ -37,13 +36,13 @@ form.addEventListener("submit", async function(event) {
 })
 
 async function getUname() {
-  let response = await fetch(`${API_URL}/api/users/${uname}`);
+  let response = await fetch(`$/api/users/${uname}`);
   responseText = await response.text();
   return responseText;
 }
 
 async function register() {
-const rawResponse = await fetch(`${API_URL}/api/register/${uname.toString().toLowerCase()}/${pin.toString()}/${pronouns.toString().toLowerCase().replace("/", ".")}`, {
+const rawResponse = await fetch(`/api/register/${uname.toString().toLowerCase()}/${pin.toString()}/${pronouns.toString().toLowerCase().replace("/", ".")}`, {
     method: 'POST',
     headers: {
       'Accept': 'text/plain'
