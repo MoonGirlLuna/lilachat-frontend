@@ -22,6 +22,7 @@ form.addEventListener("submit", async function(event) {
       pronouns = selected
     }
     
+    try {
     const isTaken = await getUname();
 
     if (isTaken === `User ${uname}`) {
@@ -29,6 +30,9 @@ form.addEventListener("submit", async function(event) {
       document.querySelector("#taken").innerHTML = `${uname} is already taken.`
     } else {
       register()
+    }
+    } catch {
+      document.querySelector("#taken").innerHTML = 'An Error has Occurred. Try again later.'
     }
 })
 
@@ -46,6 +50,7 @@ const rawResponse = await fetch(`${API_URL}/api/register/${uname.toString().toLo
     },
     body: ""
 });
-//rawResponse.then(window.location.replace("http://127.0.0.1:5500/login.html"))
+document.querySelector("#taken").innerHTML = 'Registered!'
+window.location.replace("http://127.0.0.1:5500/login.html")
 }
 

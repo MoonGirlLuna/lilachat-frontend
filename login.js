@@ -11,6 +11,7 @@ form.addEventListener("submit", async function(event) {
     uname = formData.get('uname');
     pin = formData.get('pin');
 
+    try {
     const loginInfo = await loginFetch();
 
     if (loginInfo === "pin matches") {
@@ -18,7 +19,9 @@ form.addEventListener("submit", async function(event) {
     } else if (loginInfo === "Incorrect pin" || loginInfo === `User ${uname} does not exist.`) {
         incorrectLogin()
     }
-    
+    } catch {
+        document.querySelector("#incorrect").innerHTML = 'An Error has Occurred. Try again later.'
+    }
 })
 
 async function loginFetch() {

@@ -32,13 +32,17 @@ form.addEventListener("submit", async function(event) {
     if (newPin === '') {
         newPin = pin
     }
-    
+   
+    try {
     const userNotFound = await getUname();
 
     if (userNotFound !== `User ${uname}`) {
       document.querySelector("#incorrect").innerHTML = `user ${uname} was not found`
     } else {
       loginChange()
+    }
+    } catch {
+      document.querySelector("#incorrect").innerHTML = 'An Error has Occurred. Try again later.'
     }
 })
 
@@ -56,5 +60,6 @@ const rawResponse = await fetch(`${API_URL}/api/users/change/${uname}/${pin}/${n
     },
     body: ""
 });
-//rawResponse.then(window.location.replace("http://127.0.0.1:5500/login.html"))
+document.querySelector("#incorrect").innerHTML = 'Login Changed!'
+window.location.replace("http://127.0.0.1:5500/login.html")
 }
