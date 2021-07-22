@@ -29,11 +29,10 @@ form.addEventListener("submit", async function (event) {
   try {
     const isTaken = await getUname();
 
-    if (isTaken === `User ${uname}`) {
-      console.log("This username is taken.")
+    if (isTaken.status === 'fail') {
       document.querySelector("#errormessage").innerHTML = `${uname} is already taken.`
     } else {
-      register()
+      loginChange()
     }
   } catch {
     document.querySelector("#errormessage").innerHTML = 'An Error has Occurred. Try again later.'
@@ -43,9 +42,9 @@ form.addEventListener("submit", async function (event) {
 //FETCH FUNCTIONS. GETTING USERNAME FROM API & REGISTERING USER ASSIGNED NAME AND PIN. 
 
 async function getUname() {
-  let response = await fetch(`$/api/users/${uname}`);
-  responseText = await response.text();
-  return responseText;
+  let response = await fetch(`/api/users/${uname}`);
+  responseJson = await response.json();
+  return responseJson;
 }
 
 async function register() {
