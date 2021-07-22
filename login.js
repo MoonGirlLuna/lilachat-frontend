@@ -5,8 +5,6 @@ let uname = document.querySelector('#uname').value;
 let pin = document.querySelector('#pin').value;
 const form = document.querySelector('form');
 
-const cookies = document.cookie //TEMP
-
 // SUBMIT FORM FUNCTION. AND FETCH USERNAME AND PIN FROM API. 
 
 form.addEventListener("submit", async function (event) {
@@ -33,11 +31,10 @@ function login() {
   console.log('You have logged in!')
   document.querySelector("#username").innerHTML = `${uname}`
   document.querySelector("#errormessage").innerHTML = ''
+  localStorage.setItem("username", `${uname}`);
 }
 
 function incorrectLogin() {
   console.log('Incorrect Login!')
   document.querySelector("#errormessage").innerHTML = 'Incorrect Login.'
 }
-
-console.log(cookies) //TEMP
