@@ -29,10 +29,10 @@ form.addEventListener("submit", async function (event) {
   try {
     const isTaken = await getUname();
 
-    if (isTaken.status === 'fail') {
-      document.querySelector("#errormessage").innerHTML = `${uname} is already taken.`
+    if (isTaken.status === "fail") {
+      register()
     } else {
-      loginChange()
+      document.querySelector("#errormessage").innerHTML = `${uname} is already taken.`
     }
   } catch {
     document.querySelector("#errormessage").innerHTML = 'An Error has Occurred. Try again later.'
@@ -55,6 +55,6 @@ async function register() {
     body: ""
   });
   document.querySelector("#errormessage").innerHTML = 'Registered!'
-  //window.location.replace("/login.html")
+  window.location.replace("/login.html")
 }
 
