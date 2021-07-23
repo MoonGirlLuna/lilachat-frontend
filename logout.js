@@ -1,6 +1,9 @@
 //VARIBLES
 
-let username = localStorage.getItem('username');
+// //IF NOT LOGGED IN DON'T SHOW LOG IN BUTTON
+//  if (username === '') {
+//     document.getElementById("logoutlink").style.display = "none";
+//  }
 
 //LOGOUT FETCH FUNCTION
 
@@ -11,10 +14,9 @@ async function logout() {
       headers: {
         'Content-Type': 'application/json',
     },
-      body: JSON.stringify(sendRegisterInfo),
+      body: JSON.stringify(sendLogoutInfo),
     });
     document.querySelector("#errormessage").innerHTML = 'Logged out.'
     localStorage.removeItem('username')
-
-  }
+}
   

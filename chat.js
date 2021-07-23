@@ -1,5 +1,4 @@
 // VARIABLES
-let date = '2021-07-22'
 let messageCount = 0;
 let username = localStorage.getItem('username');
 const form = document.querySelector('form');
@@ -20,7 +19,7 @@ form.addEventListener("submit", async function (event) {
 //SEND MESSAGE FETCH FUNCTION
 
 async function sendMessage() {
-    sendMessageInfo = { "name": username, "body": formMessage, "date": date }
+    sendMessageInfo = { "name": username, "body": formMessage }
     fetch('/api/message/send', {
         method: 'POST',
         headers: {

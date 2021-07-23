@@ -30,22 +30,13 @@
 
         <div id="loggeduser"></div>
 
-        <script type="text/javascript">
-            window.onload = function() {
-              let a = document.getElementById("logoutlink");
-              a.onclick = function() {
-                logout()
-                return false;
-              }
-            }
-        </script>
-
-        <a id="logoutlink" href="stream.html">(logout)</a> 
-
-        <div id="errormessage"></div>
-
         <script src="chat.js"></script>
         <script src="logout.js"></script>
+
+        <button type="button" onclick="logout()">Logout</button> 
+
+        <div id="errormessage"></div>
+        
 
     </body>
 
