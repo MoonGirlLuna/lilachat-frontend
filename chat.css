@@ -5,39 +5,53 @@ html {
 }
 
 form {
-    width: 100%
+    width: 100%;
+    overflow:hidden;
 }
 
 input {
-    padding: 3%;
+    padding: 2%;
+    width: 100%;
+    background-color: #55CDFC;
+    border-style: none;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    border-bottom-width: 1px;
+    font-family: "Lucida Console", "Courier New", monospace;
 }
 
 label {
-    visibility: hidden;
+    display: block;
+    
+}
+
+#loggeduser {
+    font-size: 30px;
 }
 
 #chatbox {
     background-color: white;
     padding: 1rem;
     box-shadow: 10px 10px 10px black;
-    width: 40rem;
+    width: 30rem;
     height: 40rem;
     display: inline-flex;
     flex-direction: column;
 }
 
 #innerchatbox {
-    background-color: rgba(60, 60, 60, .75);
+    background-color: rgba(60, 60, 60, .85);
     width: 100%;
     height: 90%;
     overflow-y: scroll;
     text-align: left;
+    color: white;
 }
 
 #loggeduser {
-    padding-top: 1%
+    padding-top: 1.5%
 }
 
-#error {
+#errormessage {
     padding-top: 2.5%;
 }

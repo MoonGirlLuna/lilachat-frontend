@@ -11,7 +11,7 @@ form.addEventListener("submit", async function (event) {
     event.preventDefault();
     const formData = new FormData(form);
 
-    formMessage = formData.get('message');
+    formMessage = formData.get('message').toString();
 
     sendMessage()
 
@@ -42,7 +42,7 @@ async function fetchMessages() {
     document.getElementById("innerchatbox").innerHTML = ""
 
     for (const message of recievedMessages) {
-      printText(message.user.bold() + ": " + message.body);
+      printText(message.user.bold().toString() + ": " + message.body.toString());
     }
 
         
