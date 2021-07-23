@@ -12,6 +12,10 @@ input {
     padding: 3%;
 }
 
+label {
+    visibility: hidden;
+}
+
 #chatbox {
     background-color: white;
     padding: 1rem;

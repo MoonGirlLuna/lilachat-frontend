@@ -3,7 +3,6 @@ let date = '2021-07-22'
 let messageCount = 0;
 let username = localStorage.getItem('username');
 const form = document.querySelector('form');
-document.querySelector("#loggeduser").innerHTML = `You are logged in as ${username}`
 
 // SEND A MESSAGE
 
@@ -63,4 +62,14 @@ function printText(text) {
     const div = document.getElementById("innerchatbox");
     div.appendChild(p)
     p.innerHTML = text
+}
+
+
+//LOGGED IN STUFF
+//TODO ADD CHECK TO SEE IF USERNAME AND TOKEN MATCHES
+if (username === null) {
+    document.querySelector("#loggeduser").innerHTML = 'You are not logged in'
+    username = ''
+} else {
+    document.querySelector("#loggeduser").innerHTML = `You are logged in as ${username}`
 }
