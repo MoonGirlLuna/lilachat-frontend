@@ -41,14 +41,14 @@ async function fetchMessages() {
     document.getElementById("innerchatbox").innerHTML = ""
 
     for (const message of recievedMessages) {
-      printText(message.user.bold().toString() + ": " + message.body.toString());
+        printText(message.user.bold().toString() + ": " + message.body.toString());
     }
 
-        
+
     if (recievedMessages.length != messageCount) {
         let scroll = document.getElementById("innerchatbox");
         scroll.scrollTop = scroll.scrollHeight;
-        }
+    }
 
     messageCount = recievedMessages.length;
 }
@@ -66,9 +66,13 @@ function printText(text) {
 
 //LOGGED IN STUFF
 //TODO ADD CHECK TO SEE IF USERNAME AND TOKEN MATCHES
-if (username === null) {
-    document.querySelector("#loggeduser").innerHTML = 'You are not logged in'
-    username = ''
-} else {
-    document.querySelector("#loggeduser").innerHTML = `You are logged in as ${username}`
+function loggedIn() {
+    username = localStorage.getItem('username');
+    if (username === null || username === '') {
+        document.querySelector("#loggeduser").innerHTML = 'You are not logged in'
+    } else {
+        document.querySelector("#loggeduser").innerHTML = `You are logged in as ${username}`
+    }
 }
+
+loggedIn()

@@ -6,7 +6,6 @@ let pin = document.querySelector('#pin').value;
 let selected = document.querySelector('#selected').value;
 let custom = document.querySelector('#custom').value;
 let pronouns = ''
-let responseJson;
 const form = document.querySelector('form');
 
 //SUBMIT FUNCTION &CHECKING IF USERNAME IS TAKEN
@@ -27,6 +26,8 @@ form.addEventListener("submit", async function (event) {
   } else {
     newPronouns = selected
   }
+
+  //CHECKS IF A USERNAME IS TAKEN
 
   const response = await fetch(`api/users/${uname}/`);
   const isTaken = await response.json();

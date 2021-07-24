@@ -22,6 +22,7 @@ input {
 
 label {
     display: block;
+    margin-top: 1%;
     
 }
 
@@ -51,6 +52,7 @@ button {
     overflow-x: hidden;
     text-align: left;
     color: white;
+    overflow-wrap: break-word;
 }
 
 #loggeduser {

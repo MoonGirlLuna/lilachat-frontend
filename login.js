@@ -18,14 +18,12 @@ form.addEventListener("submit", async function (event) {
   try {
     const loginInfo = await loginFetch();
 
-    console.log(loginInfo)
-
-    if (loginInfo.status === 200) {
+    if (loginInfo.status === 'ok') {
       login()
     } else {
       incorrectLogin()
     }
-  } catch(e) {
+  } catch (e) {
     console.log(e);
     document.querySelector("#errormessage").innerHTML = 'An Error has Occurred. Try again later. ' + e.toString();
   }
@@ -36,13 +34,14 @@ form.addEventListener("submit", async function (event) {
 
 async function loginFetch() {
   let sendLoginInfo = { "name": uname, "pin": pin }
-  return await fetch('/api/login/', {
+  const res = await fetch('/api/login/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(sendLoginInfo),
   });
+  return await res.json();
 }
 
 
@@ -52,10 +51,7 @@ function login() {
   window.location.replace("/index.html")
   document.querySelector("#errormessage").innerHTML = ''
   localStorage.setItem('username', `${uname}`);
-
-  if (username != '') {
-    document.querySelector("#username").innerHTML = `Logged in as ${username}`
-  }
+  document.querySelector("#username").innerHTML = `Logged in as ${uname}`
 }
 
 function incorrectLogin() {

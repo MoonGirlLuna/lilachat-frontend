@@ -8,15 +8,16 @@
 //LOGOUT FETCH FUNCTION
 
 async function logout() {
-    let sendLogoutInfo = { "name": username }
-    fetch('/api/logout/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
+  let sendLogoutInfo = { "name": username }
+  fetch('/api/logout/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
     },
-      body: JSON.stringify(sendLogoutInfo),
-    });
-    document.querySelector("#errormessage").innerHTML = 'Logged out.'
-    localStorage.removeItem('username')
+    body: JSON.stringify(sendLogoutInfo),
+  });
+  document.querySelector("#errormessage").innerHTML = 'Logged out.'
+  localStorage.removeItem('username')
+  username = null;
+  loggedIn()
 }
-  
