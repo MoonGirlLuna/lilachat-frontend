@@ -38,7 +38,7 @@ let messageUpdate = window.setInterval(fetchMessages, 500);
 async function fetchMessages() {
     const response = await fetch('/api/message/messages.json');
     const recievedMessages = await response.json();
-    document.getElementById("innerchatbox").innerHTML = ""
+    document.getElementById("chatbox").innerHTML = ""
 
     for (const message of recievedMessages) {
         printText(message.user.bold().toString() + ": " + message.body.toString());
@@ -46,7 +46,7 @@ async function fetchMessages() {
 
 
     if (recievedMessages.length != messageCount) {
-        let scroll = document.getElementById("innerchatbox");
+        let scroll = document.getElementById("chatbox");
         scroll.scrollTop = scroll.scrollHeight;
     }
 
@@ -58,7 +58,7 @@ async function fetchMessages() {
 
 function printText(text) {
     let p = document.createElement("p");
-    const div = document.getElementById("innerchatbox");
+    const div = document.getElementById("chatbox");
     div.appendChild(p)
     p.innerHTML = text
 }
@@ -76,3 +76,6 @@ function loggedIn() {
 }
 
 loggedIn()
+
+
+//REVIECE USERS PRONOUNS
