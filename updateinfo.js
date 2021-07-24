@@ -43,6 +43,7 @@ form.addEventListener("submit", async function (event) {
 
     if (isTaken.status === "ok") {
       document.querySelector('#errormessage').innerHTML = `${newUname} is already taken.`
+      return;
     } else {
     }
   }
@@ -50,12 +51,16 @@ form.addEventListener("submit", async function (event) {
   //CHECKS IF THE USER IS CHANGING MORE THAN ONE TEXT FIELD AT A TIME
   if (newUname !== '' && newPin !== '') {
     document.querySelector("#errormessage").innerHTML = 'You can only change one at a time!'
+    return;
   } else if (newUname !== '' && newPronouns !== '') {
     document.querySelector("#errormessage").innerHTML = 'You can only change one at a time!'
+    return;
   } else if (newPin !== '' && newPronouns !== '') {
     document.querySelector("#errormessage").innerHTML = 'You can only change one at a time!'
+    return;
   } else if (newUname !== '' && newPin !== '' && newPronouns !== '') {
     document.querySelector("#errormessage").innerHTML = 'You can only change one at a time!'
+    return;
   } else {
   }
 
@@ -63,18 +68,19 @@ form.addEventListener("submit", async function (event) {
   // ASSIGNS VARIABLES TO BE SENT TO API
   if (newUname === '' && newPin === '' && newPronouns !== '') {
     newEvent = newPronouns
-    updateEvent = 'pronouns'
+    updateEvent = 'Pronouns'
   } else if (newUname === '' && newPronouns === '' && newPin !== '') {
     newEvent = newPin
-    updateEvent = 'pin'
+    updateEvent = 'Pin'
   } else if (newPin === '' && newPronouns === '' && newUname !== '') {
     newEvent = newUname
-    updateEvent = 'name'
+    updateEvent = 'Name'
   } else if (newPin === '' && newUname === '' && newPronouns === '') {
     document.querySelector("#errormessage").innerHTML = 'Please enter a new name, pin, or pronouns!'
+    return;
   } else {
   }
-
+  
   loginStatus()
 
 })
@@ -110,7 +116,7 @@ async function checkLoginInfo() {
 
 async function updateInfo() {
   let sendUpdateInfo = { "name": uname, "pin": pin, "changed_event": updateEvent, "new_event": newEvent }
-  fetch('/api/users/change', {
+  fetch('/api/change', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
